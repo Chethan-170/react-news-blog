@@ -12,7 +12,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.individualBlog{
+
+.mainContent{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.mainContent > p{
   border: 2px solid black;
   background-color: white;
+  flex: 1;
 }
