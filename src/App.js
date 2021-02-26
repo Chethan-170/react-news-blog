@@ -1,6 +1,17 @@
+import { Fragment } from "react";
+import Navbar from "./components/Navbar";
+import Home from  './components/Home';
+import { Route, BrowserRouter, Switch } from 'react-router-dom'
 function App() {
   return (
-    <h1>Here you go</h1>
+    <Fragment>
+      <BrowserRouter>
+        <Navbar/>
+        <Switch>
+            <Route exact path='/' component={Home}/>          
+        </Switch>   
+      </BrowserRouter>
+    </Fragment>
   );
 }
 
