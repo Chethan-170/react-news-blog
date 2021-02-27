@@ -3,7 +3,7 @@ html{
 }
 body {
   height: 100%;
-  background-color: rgb(212, 226, 236) !important;
+  background-color: #fcfdfd !important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,11 +20,26 @@ code {
 .mainContent{
   display: flex;
   flex-direction: column;
-  flex-grow: wrap;
-  padding: 20px;
+  padding: 4% 5%;
 }
-.mainContent > p{
-  border: 2px solid black;
+.mainContent > div.card{
+  border: 1px solid rgb(90, 82, 82);
   background-color: rgb(230, 224, 224);
   flex: 1;
+}
+.newsContent{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.newsContent > img.newsContentChild{
+  flex : 1;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+.newsContent > p.newsContentChild{
+  flex : 3;
+  flex-grow: 3;
+  flex-shrink: 1;
+  padding: 10px;
 }

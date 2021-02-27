@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { Loader } from './Loader';
+import { NewsBuilder } from './NewsBuilder';
 
 const Home = ()=>{
     const [latestNews,setLatestNews] = useState([]);
@@ -14,7 +15,6 @@ const Home = ()=>{
         axios.request(options).then(function (response) {
             setLatestNews(response.data.articles);
             setLoadingStatus(0);
-            console.log(response.data.articles)
         }).catch(function (error) {
             console.error(error);
         });
@@ -22,10 +22,7 @@ const Home = ()=>{
     return(
         (loadingStatus)
         ? <Loader/>
-        : 
-        <div className="mainContent">        
-            <h1>hooo</h1>
-        </div>
+        : <NewsBuilder articles={latestNews}/>
     );
 }
 export default Home;
