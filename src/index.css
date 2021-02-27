@@ -1,4 +1,8 @@
+html{
+  height: 100%;
+}
 body {
+  height: 100%;
   background-color: rgb(212, 226, 236) !important;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,10 +20,11 @@ code {
 .mainContent{
   display: flex;
   flex-direction: column;
+  flex-grow: wrap;
   padding: 20px;
 }
 .mainContent > p{
   border: 2px solid black;
-  background-color: white;
+  background-color: rgb(230, 224, 224);
   flex: 1;
 }

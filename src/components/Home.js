@@ -1,10 +1,30 @@
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+import { Loader } from './Loader';
 
 const Home = ()=>{
+    const [latestNews,setLatestNews] = useState([]);
+    const [loadingStatus,setLoadingStatus] = useState(1);
+    useEffect(()=>{
+        var url = 'https://newsapi.org/v2/top-headlines?country=in&apiKey=054806b4784d43afbbef42274196588d';
+        const options = {
+            method: 'GET',
+            url: url
+        };
+        axios.request(options).then(function (response) {
+            setLatestNews(response.data.articles);
+            setLoadingStatus(0);
+            console.log(response.data.articles)
+        }).catch(function (error) {
+            console.error(error);
+        });
+    },[]);
     return(
-        <div className="mainContent">
-            <p className="p-3 individualBlog1">Wiki is Hawaiian for “to hurry; fast, quick.” As a noun, wiki means “a website that allows anyone to add, delete, or revise content by using a web browser.” The term wiki is also used as a verb; if you wiki, you are either researching a topic on a wiki or contributing to one.</p>
-            <p className="p-3 individualBlog2">Wiki is Hawaiian for “to hurry; fast, quick.” As a noun, wiki means “a website that allows anyone to add, delete, or revise content by using a web browser.” The term wiki is also used as a verb; if you wiki, you are either researching a topic on a wiki or contributing to one.</p>  
-            <p className="p-3 individualBlog3">Wiki is Hawaiian for “to hurry; fast, quick.” As a noun, wiki means “a website that allows anyone to add, delete, or revise content by using a web browser.” The term wiki is also used as a verb; if you wiki, you are either researching a topic on a wiki or contributing to one.</p>          
+        (loadingStatus)
+        ? <Loader/>
+        : 
+        <div className="mainContent">        
+            <h1>hooo</h1>
         </div>
     );
 }
