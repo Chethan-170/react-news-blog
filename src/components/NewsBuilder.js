@@ -14,14 +14,13 @@ export const NewsBuilder = (props)=>{
             {
                 articles.map((article,ind)=>{
                     if(article.urlToImage !==null && article.content !== null){
-                        console.log(article);
                         const cardClasses  = "card text-white mb-3 " + getRandomBG();
                         return(
                             <div key={ind} className={cardClasses} >
                                 <div className="card-header">
                                     <span>Source : {article.source.name || ""}</span>
                                     <span className="pl-2">Published At : {article.publishedAt || ""}</span>
-                                    <button style={{float:"right"}} type="button" class="btn btn-outline-light">View</button>
+                                    <button style={{float:"right"}} type="button" className="btn btn-outline-light">View</button>
                                 </div>
                                 <div className="card-body">
                                     <h5 className="card-title">{article.title || ""}</h5>
