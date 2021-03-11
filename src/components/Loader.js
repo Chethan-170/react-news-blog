@@ -1,14 +1,20 @@
 import { Fragment } from "react"
-
+const container = {
+    display : 'flex',
+    flexDirection : "column",
+    alignItems : "center",
+    justifyContent : "center",
+    height : "100%"
+}
 export const Loader = ()=>{
     return (
         <Fragment>
-            <div className="d-flex justify-content-center mt-5">
+            <div style={container}>
                 <div className="spinner-border" role="status">
                     <span className="sr-only">Loading...</span>
                 </div>
+                <span className="mt-3">please wait loading...</span>
             </div>
-            <span className="d-flex justify-content-center mt-3" style={{}}>please wait loading...</span>
         </Fragment>
     )
 }
