@@ -5,6 +5,11 @@ import axios from 'axios';
 import Navbar from "./components/Navbar";
 import Home from  './components/Home';
 import { Loader } from './components/Loader';
+import store from './reducers/store';
+import * as actions from './reducers/actions';
+
+console.log("initial:",store.getState());
+
 
 const newsApiUrl = "https://newsapi.org/v2/";
 const apiKey = "054806b4784d43afbbef42274196588d";
@@ -54,7 +59,20 @@ const makeAxiosRequest = async (url)=>{
 function App() {
   const [appState, setAppState] = useState(true);
   useEffect(()=>{    
-    getSportsNews().then(response=>console.log(response))
+    getHeadLines().then(response=>{
+      store.dispatch(actions.setHeadLines(response.data.articles));
+      console.log("headlines end");
+    }).then(()=>{
+      getIndianNews().then(response=>{
+        store.dispatch(actions.setLocalNews(response.data.articles));
+        console.log("local news end");
+      }).then(()=>{
+        getScienceNews().then(response=>{
+          store.dispatch(actions.setLocalNews(response.data.articles));
+          console.log("science news end");
+        })
+      })
+    })
   });
   return (
     <Fragment>

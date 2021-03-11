@@ -3,5 +3,6 @@ export const initState = {
     science : [],
     technology : [],
     entertainment : [],
-    local : []
+    local : [],
+    sports : []
 }
