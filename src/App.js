@@ -10,7 +10,6 @@ import * as actions from './reducers/actions';
 
 console.log("initial:",store.getState());
 
-
 const newsApiUrl = "https://newsapi.org/v2/";
 const apiKey = "054806b4784d43afbbef42274196588d";
 
@@ -23,8 +22,9 @@ const getIndianNews = async ()=>{
   let url = newsApiUrl+"top-headlines?country=in&sortBy=popularity&apiKey="+apiKey;
   return makeAxiosRequest(url);
 }
-const getEntertainmentNews = async ()=>{
-  let url = newsApiUrl+"top-headlines?language=en&category=entertainment&apiKey="+apiKey;
+
+const getScienceNews = async ()=>{
+  let url = newsApiUrl+"top-headlines?language=en&category=science&apiKey="+apiKey;
   return makeAxiosRequest(url);
 }
 
@@ -33,8 +33,8 @@ const getTechnologyNews = async ()=>{
   return makeAxiosRequest(url);
 }
 
-const getScienceNews = async ()=>{
-  let url = newsApiUrl+"top-headlines?language=en&category=science&apiKey="+apiKey;
+const getEntertainmentNews = async ()=>{
+  let url = newsApiUrl+"top-headlines?language=en&category=entertainment&apiKey="+apiKey;
   return makeAxiosRequest(url);
 }
 
@@ -57,7 +57,7 @@ const makeAxiosRequest = async (url)=>{
 }
 
 function App() {
-  const [appState, setAppState] = useState(true);
+  const [appState, setAppState] = useState(false);
   useEffect(()=>{    
     getHeadLines().then(response=>{
       store.dispatch(actions.setHeadLines(response.data.articles));
@@ -68,12 +68,30 @@ function App() {
         console.log("local news end");
       }).then(()=>{
         getScienceNews().then(response=>{
-          store.dispatch(actions.setLocalNews(response.data.articles));
+          store.dispatch(actions.setScienceNews(response.data.articles));
           console.log("science news end");
+        }).then(()=>{
+          getTechnologyNews().then(response=>{
+            store.dispatch(actions.setTechNews(response.data.articles));
+            console.log("tech news end");
+          }).then(()=>{
+            getEntertainmentNews().then(response=>{
+              store.dispatch(actions.setEntertainmentNews(response.data.articles));
+              console.log("entertainment news end");
+            }).then(()=>{
+              getSportsNews().then(response=>{
+                store.dispatch(actions.setSportsNews(response.data.articles));
+                console.log("sports news end");
+              }).then(()=>{
+                console.log('final:',store.getState());
+                setAppState(true);
+              })
+            })
+          })
         })
       })
     })
-  });
+  },[]);
   return (
     <Fragment>
         {
