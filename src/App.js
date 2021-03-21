@@ -8,8 +8,6 @@ import { Loader } from './components/Loader';
 import store from './reducers/store';
 import * as actions from './reducers/actions';
 
-console.log("initial:",store.getState());
-
 const newsApiUrl = "https://newsapi.org/v2/";
 const apiKey = "054806b4784d43afbbef42274196588d";
 
@@ -82,7 +80,6 @@ function App() {
                 store.dispatch(actions.setSportsNews(response.data.articles));
                 console.log("sports news");
               }).then(()=>{
-                console.log('final:',store.getState());
                 setAppState(true);
               })
             })
