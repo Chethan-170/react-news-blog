@@ -1,6 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { BrowserRouter } from 'react-router-dom';
-import { useState, useEffect} from 'react';
+import { Provider } from 'react-redux';
 import axios from 'axios';
 import Navbar from "./components/Navbar";
 import Home from  './components/Home';
@@ -43,7 +43,6 @@ const getSportsNews = async ()=>{
   return makeAxiosRequest(url);
 }
 
-
 const makeAxiosRequest = async (url)=>{
   const options = {
     method: 'GET',
@@ -61,27 +60,27 @@ function App() {
   useEffect(()=>{    
     getHeadLines().then(response=>{
       store.dispatch(actions.setHeadLines(response.data.articles));
-      console.log("headlines end");
+      console.log("headlines");
     }).then(()=>{
       getIndianNews().then(response=>{
         store.dispatch(actions.setLocalNews(response.data.articles));
-        console.log("local news end");
+        console.log("local news");
       }).then(()=>{
         getScienceNews().then(response=>{
           store.dispatch(actions.setScienceNews(response.data.articles));
-          console.log("science news end");
+          console.log("science news");
         }).then(()=>{
           getTechnologyNews().then(response=>{
             store.dispatch(actions.setTechNews(response.data.articles));
-            console.log("tech news end");
+            console.log("tech news");
           }).then(()=>{
             getEntertainmentNews().then(response=>{
               store.dispatch(actions.setEntertainmentNews(response.data.articles));
-              console.log("entertainment news end");
+              console.log("entertainment news");
             }).then(()=>{
               getSportsNews().then(response=>{
                 store.dispatch(actions.setSportsNews(response.data.articles));
-                console.log("sports news end");
+                console.log("sports news");
               }).then(()=>{
                 console.log('final:',store.getState());
                 setAppState(true);
@@ -98,8 +97,10 @@ function App() {
           (appState)
           ?
           <BrowserRouter>
-            <Navbar/>
-            <Home/>
+            <Provider store={store}>
+              <Navbar/>
+              <Home/>
+            </Provider>
           </BrowserRouter>
           :
           <Loader/>

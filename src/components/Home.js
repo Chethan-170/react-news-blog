@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
 import show404 from './news/404';
+import HeadLines from './news/Headlines';
 import * as news from './news'
 
 const flexContainer = {
@@ -8,7 +9,6 @@ const flexContainer = {
     flexWrap : "wrap",
 }
 const Home = (props)=>{
-
     return(
         <Fragment>
            <div className="card m-2">
@@ -22,7 +22,7 @@ const Home = (props)=>{
                 </div>
                 <div className="card-body">                    
                     <Switch>
-                        <Route exact path={['/','/headlines']} component={news.HeadLines}/>
+                        <Route exact path={['/','/headlines']} component={ HeadLines }/>
                         <Route path='/local' component={news.LocalNews}/>
                         <Route path='/entertainment' component={news.EntertainmentNews}/>
                         <Route path='/technology' component={news.TechnologyNews}/>
@@ -36,5 +36,4 @@ const Home = (props)=>{
         </Fragment>
     );
 }
-
 export default withRouter(Home);
