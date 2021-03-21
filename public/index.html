@@ -28,6 +28,163 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+      .news-card-container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      .news-cards {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        padding: 1.5%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      .news-card {
+        position: relative;
+        margin-bottom: 20px;
+        padding-bottom: 30px;
+        background: #fefff9;
+        color: #363636;
+        text-decoration: none;
+        -moz-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+        box-shadow: rgba(0, 0, 0, 0.19) 0 0 8px 0;
+        -moz-border-radius: 4px;
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+      }
+      @media (max-width: 700px) {
+        .news-card {
+          width: 100%;
+        }
+      }
+      @media (min-width: 700px) {
+        .news-card {
+          max-width: 320px;
+          margin-right: 20px;
+          margin-bottom: 20px;
+        }
+        .news-card:nth-child(even) {
+          margin-right: 0;
+        }
+      }
+      @media (min-width: 980px) {
+        .news-card:nth-child(even) {
+          margin-right: 20px;
+        }
+        .news-card:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+      .news-card span {
+        display: block;
+      }
+      .news-card .news-card-summary {
+        padding: 5% 5% 3% 5%;
+      }
+      .news-card .news-card-header {
+        position: relative;
+        height: 175px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: rgba(255, 255, 255, 0.15);
+        background-blend-mode: overlay;
+        -moz-border-radius: 4px 4px 0 0;
+        -webkit-border-radius: 4px;
+        border-radius: 4px 4px 0 0;
+      }
+      .news-card .news-card-header:hover, .news-card .news-card-header:focus {
+        background-color: rgba(255, 255, 255, 0);
+      }
+      .news-card .news-card-title {
+        background: rgba(157, 187, 63, 0.85);
+        padding: 3.5% 0 2.5% 0;
+        color: white;
+        font-family: 'Roboto Condensed', sans-serif;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      .news-card .news-card-title h3 {
+        font-size: 1.2em;
+        line-height: 1.2;
+        padding: 0 3.5%;
+        margin: 0;
+      }
+      .news-card .news-card-meta {
+        max-height: 0;
+        overflow: hidden;
+        color: #666;
+        font-size: .78em;
+        text-transform: uppercase;
+        position: absolute;
+        bottom: 5%;
+        padding: 0 5%;
+        -moz-transition-property: max-height;
+        -o-transition-property: max-height;
+        -webkit-transition-property: max-height;
+        transition-property: max-height;
+        -moz-transition-duration: 0.4s;
+        -o-transition-duration: 0.4s;
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+        -moz-transition-timing-function: ease-in-out;
+        -o-transition-timing-function: ease-in-out;
+        -webkit-transition-timing-function: ease-in-out;
+        transition-timing-function: ease-in-out;
+      }
+      .news-card:hover, .news-card:focus {
+        background: white;
+        -moz-box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 0px 20px 0px;
+      }
+      .news-card:hover .news-card-title, .news-card:focus .news-card-title {
+        background: rgba(157, 187, 63, 0.95);
+      }
+      .news-card:hover .news-card-meta, .news-card:focus .news-card-meta {
+        max-height: 1.5em;
+      }
+
+      img.news-img {
+        max-width: 100%;
+      }
+
+      body {
+        background: #f0f0f0;
+        font-size: 17px;
+        line-height: 1.4;
+        font-family: 'Jaldi', sans-serif;
+      }
+
+      * {
+        -moz-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, -moz-transform;
+        -o-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, -o-transform;
+        -webkit-transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, -webkit-transform;
+        transition-property: background-color, border-color, box-shadow, color, opacity, text-shadow, transform;
+        -moz-transition-duration: 0.2s;
+        -o-transition-duration: 0.2s;
+        -webkit-transition-duration: 0.2s;
+        transition-duration: 0.2s;
+        -moz-transition-timing-function: linear;
+        -o-transition-timing-function: linear;
+        -webkit-transition-timing-function: linear;
+        transition-timing-function: linear;
+      }
+
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
