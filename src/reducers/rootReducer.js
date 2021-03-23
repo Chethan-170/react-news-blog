@@ -24,8 +24,10 @@ const rootReducer = (state = initState, action)=>{
             state.sports = action.payload;
             return state;
         case actionTypes.HIDE_HEADLINE_NEWS:
-            console.log(action);
-            return "hi";
+            let tempArr = state.headLines.filter((news,newsID)=> newsID != action.payload);
+            state.headLines = tempArr;
+            console.log(state);
+            return {...state};
         default:
             return state;
     }
