@@ -23,6 +23,9 @@ const rootReducer = (state = initState, action)=>{
         case actionTypes.SET_SPORTS_NEWS:
             state.sports = action.payload;
             return state;
+        case actionTypes.HIDE_HEADLINE_NEWS:
+            console.log(action);
+            return "hi";
         default:
             return state;
     }

@@ -5,3 +5,4 @@ export const SET_SCIENCE_NEWS = "setScienceNews";
 export const SET_TECH_NEWS = "setTechNews";
 export const SET_ENTERTAINMENT_NEWS = "setEntertainmentNews";
 export const SET_SPORTS_NEWS = "setSportsNews";
+export const HIDE_HEADLINE_NEWS = "hideHeadLine";
