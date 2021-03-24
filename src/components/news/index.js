@@ -1,5 +1,4 @@
 import { containerStyle } from '../../components/style';
-import { connect } from 'react-redux';
 
 export const LocalNews = (props)=>{
     return(

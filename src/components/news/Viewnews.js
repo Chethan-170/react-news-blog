@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 const ViewNews = ({ news }) =>{
     console.log(news);
     return (
-        <h2>Here you  go</h2>
+        <h2>{ news.title }</h2>
     )
 }
 const mapStateToProps = (state, ownProps)=>{

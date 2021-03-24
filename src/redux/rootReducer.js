@@ -1,6 +1,5 @@
 import { initState } from './initState';
 import * as actionTypes from './actionTypes';
-
 const rootReducer = (state = initState, action)=>{
     switch (action.type) {
         case actionTypes.GET_NEWS:
@@ -24,7 +23,7 @@ const rootReducer = (state = initState, action)=>{
             const { sports, ...otherThanSports} = state;
             return { sports:action.payload, ...otherThanSports};
         case actionTypes.HIDE_HEADLINE_NEWS:
-            let tempArr = state.headLines.filter((news,newsID)=> newsID != action.payload);
+            let tempArr = state.headLines.filter((news,newsID)=> newsID !== action.payload);
             const { headLines: prevHeadLines ,...prevState } = state;
             return {headLines:tempArr,...prevState};
         default:

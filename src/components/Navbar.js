@@ -24,5 +24,4 @@ const Navbar = () =>{
         </nav>
     )
 }
-
 export default withRouter(Navbar)

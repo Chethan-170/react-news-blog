@@ -46,8 +46,5 @@ const mapStateToProps = state =>{
     const { headLines } = state;
     return { headLines }
 }
-const mapDispatchToProps = (dispatch)=>{
-    return bindActionCreators({ hideHeadline }, dispatch);
-}
-
+const mapDispatchToProps = (dispatch)=> bindActionCreators({ hideHeadline }, dispatch);
 export default connect(mapStateToProps, mapDispatchToProps)(HeadLines);

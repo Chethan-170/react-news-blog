@@ -38,7 +38,6 @@ const Home = (props)=>{
                     </Switch>   
                 </div>
             </div>
-
         </Fragment>
     );
 }

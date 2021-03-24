@@ -10,7 +10,6 @@ import * as actions from './redux/actions';
 
 const newsApiUrl = "https://newsapi.org/v2/";
 const apiKey = "054806b4784d43afbbef42274196588d";
-
 const getHeadLines = async ()=>{
   let url = newsApiUrl+"top-headlines?sources=bbc-news&language=en&apiKey="+apiKey;
   return makeAxiosRequest(url);
@@ -106,5 +105,4 @@ function App() {
     </Fragment>
   );
 }
-
 export default App;
