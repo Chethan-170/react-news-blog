@@ -24,13 +24,10 @@ const rootReducer = (state = initState, action)=>{
             const { sports, ...otherThanSports} = state;
             return { sports:action.payload, ...otherThanSports};
         case actionTypes.HIDE_HEADLINE_NEWS:
-            return {};
-            // let tempArr = state.headLines.filter((news,newsID)=> newsID != action.payload);
-            // const { headLines: prevHeadLines ,...prevState } = state;
-            // console.log({headLines:tempArr,...prevState});
-            // return {headLines:tempArr,...prevState};
+            let tempArr = state.headLines.filter((news,newsID)=> newsID != action.payload);
+            const { headLines: prevHeadLines ,...prevState } = state;
+            return {headLines:tempArr,...prevState};
         default:
-            console.log('here comes');
             return state;
     }
 }

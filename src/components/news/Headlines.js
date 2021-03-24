@@ -6,14 +6,9 @@ import { useState, useEffect, Fragment } from 'react';
 import { Loader } from '../Loader';
 import { NavLink } from 'react-router-dom';
 
-const HeadLines = (props)=>{
-    const [headLines,setHeadLines] = useState([]);
-    useEffect(()=>{
-        setHeadLines(props.headLines);
-        console.log("headlines fired",props);
-    },[]);
+const HeadLines = ({ headLines, hideHeadline })=>{
     const handleHideClick = newsID =>{
-        props.hideHeadline(newsID);
+        hideHeadline(newsID);
     }
     return(        
         (headLines.length > 0)
@@ -24,7 +19,7 @@ const HeadLines = (props)=>{
                     headLines.map(({ title, description, publishedAt, urlToImage },ind)=>{
                         
                             return <div key={ "news"+ind } className="news-card">
-                                <NavLink to={"viewNews/"+ind}>
+                                <NavLink to={"viewNews/headline/"+ind}>
                                     <span className="news-card-header" style={{backgroundImage: `url(${urlToImage})`}}>
                                         <span className="news-card-title">
                                             <h3>{ title }</h3>
@@ -48,7 +43,8 @@ const HeadLines = (props)=>{
         
     )
 }
-function mapStateToProps(state){
+
+const mapStateToProps = state =>{
     const { headLines } = state;
     return { headLines }
 }

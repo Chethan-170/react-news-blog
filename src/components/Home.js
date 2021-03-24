@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
 import show404 from './news/404';
 import HeadLines from './news/Headlines';
+import ViewNews from './news/Viewnews';
 import * as news from './news'
 
 const flexContainer = {
@@ -27,7 +28,8 @@ const Home = (props)=>{
                         <Route path='/entertainment' component={news.EntertainmentNews}/>
                         <Route path='/technology' component={news.TechnologyNews}/>
                         <Route path='/science' component={news.ScienceNews}/>
-                        <Route path="/viewNews/:newsID"><h1>hii</h1></Route>
+                        {/* <Route path="/viewNews/:newsType/:newsID" render={(props)=> <ViewNews {...props} title={`Props through render`}/>}/> */}
+                        <Route path="/viewNews/:newsType/:newsID" component={ ViewNews }/>
                         <Route path="*" component={show404}/>
                     </Switch>   
                 </div>
