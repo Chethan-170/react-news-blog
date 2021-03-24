@@ -1,7 +1,7 @@
 import { containerStyle } from '../style';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { hideHeadline } from '../../reducers/actions';
+import { hideHeadline } from '../../redux/actions';
 import { useState, useEffect, Fragment } from 'react';
 import { Loader } from '../Loader';
 import { NavLink } from 'react-router-dom';
@@ -21,10 +21,9 @@ const HeadLines = (props)=>{
         <div className="news-card-container">
             <div className="news-cards">
                 {
-                    headLines.map(({ title, description, publishedAt, urlToImage, hiddenNews },ind)=>{
-                        return (! hiddenNews) &&
-                         (
-                            <div key={ "news"+ind } className="news-card">
+                    headLines.map(({ title, description, publishedAt, urlToImage },ind)=>{
+                        
+                            return <div key={ "news"+ind } className="news-card">
                                 <NavLink to={"viewNews/"+ind}>
                                     <span className="news-card-header" style={{backgroundImage: `url(${urlToImage})`}}>
                                         <span className="news-card-title">
@@ -39,7 +38,7 @@ const HeadLines = (props)=>{
                                     <span>{ publishedAt } <button onClick={()=>handleHideClick(ind)} style={{padding:"1px 8px"}} className="btn btn-sm btn-outline-dark float-right">Hide</button></span>
                                 </span>
                             </div>
-                        );
+                        
                     })
                 }
         </div>

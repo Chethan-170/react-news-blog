@@ -5,8 +5,8 @@ import axios from 'axios';
 import Navbar from "./components/Navbar";
 import Home from  './components/Home';
 import { Loader } from './components/Loader';
-import store from './reducers/store';
-import * as actions from './reducers/actions';
+import store from './redux/store';
+import * as actions from './redux/actions';
 
 const newsApiUrl = "https://newsapi.org/v2/";
 const apiKey = "054806b4784d43afbbef42274196588d";
