@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import { Route, Switch, NavLink, withRouter } from 'react-router-dom';
+import  { Provider } from 'react-redux';
+import store from '../redux/store';
 import show404 from './news/404';
 import HeadLines from './news/Headlines';
 import ViewNews from './news/Viewnews';
@@ -28,8 +30,10 @@ const Home = (props)=>{
                         <Route path='/entertainment' component={news.EntertainmentNews}/>
                         <Route path='/technology' component={news.TechnologyNews}/>
                         <Route path='/science' component={news.ScienceNews}/>
-                        {/* <Route path="/viewNews/:newsType/:newsID" render={(props)=> <ViewNews {...props} title={`Props through render`}/>}/> */}
-                        <Route path="/viewNews/:newsType/:newsID" component={ ViewNews }/>
+                        <Route path="/viewNews/:newsType/:newsID" render={(props)=> <Provider store={store}> <ViewNews {...props} /> </Provider>}/>
+                        {/* <Provider store={store}>
+                            <Route path="/viewNews/:newsType/:newsID" component={ ViewNews }/>
+                        </Provider> */}
                         <Route path="*" component={show404}/>
                     </Switch>   
                 </div>

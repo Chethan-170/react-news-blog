@@ -1,9 +1,14 @@
-const ViewNews = (props)=>{
-    const newsType = props.match.params.newsType;
-    const newsID = props.match.params.newsID;
-    console.log(newsType,newsID);
+import { connect } from 'react-redux';
+
+const ViewNews = ({ news }) =>{
+    console.log(news);
     return (
         <h2>Here you  go</h2>
     )
 }
-export default ViewNews;
+const mapStateToProps = (state, ownProps)=>{
+    const newsType = ownProps.match.params.newsType;
+    const newsID = ownProps.match.params.newsID;
+    return { news: state[newsType][newsID]};
+}
+export default connect(mapStateToProps)(ViewNews);

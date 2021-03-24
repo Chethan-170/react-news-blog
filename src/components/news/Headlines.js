@@ -1,8 +1,6 @@
-import { containerStyle } from '../style';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { hideHeadline } from '../../redux/actions';
-import { useState, useEffect, Fragment } from 'react';
 import { Loader } from '../Loader';
 import { NavLink } from 'react-router-dom';
 
@@ -19,7 +17,7 @@ const HeadLines = ({ headLines, hideHeadline })=>{
                     headLines.map(({ title, description, publishedAt, urlToImage },ind)=>{
                         
                             return <div key={ "news"+ind } className="news-card">
-                                <NavLink to={"viewNews/headline/"+ind}>
+                                <NavLink to={"viewNews/headLines/"+ind}>
                                     <span className="news-card-header" style={{backgroundImage: `url(${urlToImage})`}}>
                                         <span className="news-card-title">
                                             <h3>{ title }</h3>
