@@ -26,7 +26,7 @@ export const setSportsNews = (news = []) =>({
     type : actionTypes.SET_SPORTS_NEWS,
     payload : news
 });
-export const hideHeadline = (newsID = "") =>({
-    type : actionTypes.HIDE_HEADLINE_NEWS,
-    payload : newsID
+export const hideNews = (newsType="", newsID ="") =>({
+    type : actionTypes.HIDE_NEWS,
+    payload : { newsType, newsID }
 });

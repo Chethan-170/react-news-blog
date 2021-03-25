@@ -22,10 +22,24 @@ const rootReducer = (state = initState, action)=>{
         case actionTypes.SET_SPORTS_NEWS:
             const { sports, ...otherThanSports} = state;
             return { sports:action.payload, ...otherThanSports};
-        case actionTypes.HIDE_HEADLINE_NEWS:
-            let tempArr = state.headLines.filter((news,newsID)=> newsID !== action.payload);
-            const { headLines: prevHeadLines ,...prevState } = state;
-            return {headLines:tempArr,...prevState};
+        case actionTypes.HIDE_NEWS:
+            if(action.payload.newsType === "headLines"){
+                let tempArr = state.headLines.filter((news,newsID)=> newsID !== action.payload.newsID);
+                const { headLines: prevHeadLines ,...prevState } = state;
+                return {headLines:tempArr,...prevState};
+            }else if(action.payload.newsType === "localNews"){
+                let tempArr = state.local.filter((news,newsID)=> newsID !== action.payload.newsID);
+                const { local: prevLocalNews ,...prevState } = state;
+                return {local:tempArr,...prevState};
+            }else if(action.payload.newsType === "scienceNews"){
+                let tempArr = state.science.filter((news,newsID)=> newsID !== action.payload.newsID);
+                const { science: prevScienceNews ,...prevState } = state;
+                return {science:tempArr,...prevState};
+            }else if(action.payload.newsType === "technologyNews"){
+                let tempArr = state.technology.filter((news,newsID)=> newsID !== action.payload.newsID);
+                const { technology: prevTechNews ,...prevState } = state;
+                return {technology:tempArr,...prevState};
+            }else return state;
         default:
             return state;
     }

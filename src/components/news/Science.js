@@ -4,20 +4,20 @@ import { hideNews } from '../../redux/actions';
 import { Loader } from '../Loader';
 import { NavLink } from 'react-router-dom';
 
-const HeadLines = ({ headLines, hideNews })=>{
+const Science = ({ science, hideNews })=>{
     const handleHideClick = newsID =>{
-        hideNews("headLines", newsID);
+        hideNews("scienceNews", newsID);
     }
     return(        
-        (headLines.length > 0)
+        (science.length > 0)
         ?
         <div className="news-card-container">
             <div className="news-cards">
                 {
-                    headLines.map(({ title, description, publishedAt, urlToImage },ind)=>{
+                    science.map(({ title, description, publishedAt, urlToImage },ind)=>{
                         
                             return <div key={ "news"+ind } className="news-card">
-                                <NavLink to={"viewNews/headLines/"+ind}>
+                                <NavLink to={"viewNews/science/"+ind}>
                                     <span className="news-card-header" style={{backgroundImage: `url(${urlToImage})`}}>
                                         <span className="news-card-title">
                                             <h3>{ title }</h3>
@@ -43,8 +43,8 @@ const HeadLines = ({ headLines, hideNews })=>{
 }
 
 const mapStateToProps = state =>{
-    const { headLines } = state;
-    return { headLines }
+    const { science } = state;
+    return { science }
 }
 const mapDispatchToProps = (dispatch)=> bindActionCreators({ hideNews }, dispatch);
-export default connect(mapStateToProps, mapDispatchToProps)(HeadLines);
+export default connect(mapStateToProps, mapDispatchToProps)(Science);

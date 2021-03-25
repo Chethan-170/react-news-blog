@@ -4,6 +4,9 @@ import  { Provider } from 'react-redux';
 import store from '../redux/store';
 import show404 from './news/404';
 import HeadLines from './news/Headlines';
+import LocalNews from './news/LocalNews';
+import Science from './news/Science';
+import Technology from './news/Tech';
 import ViewNews from './news/Viewnews';
 import * as news from './news'
 
@@ -26,10 +29,10 @@ const Home = (props)=>{
                 <div className="card-body">                    
                     <Switch>
                         <Route exact path={['/','/headlines']} component={ HeadLines }/>
-                        <Route path='/local' component={news.LocalNews}/>
+                        <Route path='/local' component={ LocalNews }/>
                         <Route path='/entertainment' component={news.EntertainmentNews}/>
-                        <Route path='/technology' component={news.TechnologyNews}/>
-                        <Route path='/science' component={news.ScienceNews}/>
+                        <Route path='/technology' component={ Technology }/>
+                        <Route path='/science' component={ Science }/>
                         <Route path="/viewNews/:newsType/:newsID" render={(props)=> <Provider store={store}> <ViewNews {...props} /> </Provider>}/>
                         {/* <Provider store={store}>
                             <Route path="/viewNews/:newsType/:newsID" component={ ViewNews }/>

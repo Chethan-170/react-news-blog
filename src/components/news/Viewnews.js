@@ -12,7 +12,7 @@ const ViewNews = ({ news }) =>{
                 </div><img alt="Alt Img" src={news.urlToImage}/>
             </div>
             <div className="post-content">
-                <div className="category">{ news.author }</div>
+                <div className="category">{ news.author || news.source.name }</div>
                 <h1 className="title">{ news.title }</h1>
                 <h2 className="sub_title">{ news.description }</h2>
                 <p className="description">
