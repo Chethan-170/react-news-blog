@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 const ViewNews = ({ news }) =>{
-    console.log(news);
     const dateArr = new Date(news.publishedAt).toDateString().split(' ');
     return (
         <div className="post-module hover">

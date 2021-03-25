@@ -7,8 +7,9 @@ import HeadLines from './news/Headlines';
 import LocalNews from './news/LocalNews';
 import Science from './news/Science';
 import Technology from './news/Tech';
+import Entertainment from './news/Entertainment';
+import Sports from './news/Sports';
 import ViewNews from './news/Viewnews';
-import * as news from './news'
 
 const flexContainer = {
     display : "flex",
@@ -30,9 +31,10 @@ const Home = (props)=>{
                     <Switch>
                         <Route exact path={['/','/headlines']} component={ HeadLines }/>
                         <Route path='/local' component={ LocalNews }/>
-                        <Route path='/entertainment' component={news.EntertainmentNews}/>
-                        <Route path='/technology' component={ Technology }/>
                         <Route path='/science' component={ Science }/>
+                        <Route path='/technology' component={ Technology }/>
+                        <Route path='/entertainment' component={ Entertainment }/>
+                        <Route path='/sports' component={ Sports }/>
                         <Route path="/viewNews/:newsType/:newsID" render={(props)=> <Provider store={store}> <ViewNews {...props} /> </Provider>}/>
                         {/* <Provider store={store}>
                             <Route path="/viewNews/:newsType/:newsID" component={ ViewNews }/>

@@ -39,6 +39,14 @@ const rootReducer = (state = initState, action)=>{
                 let tempArr = state.technology.filter((news,newsID)=> newsID !== action.payload.newsID);
                 const { technology: prevTechNews ,...prevState } = state;
                 return {technology:tempArr,...prevState};
+            }else if(action.payload.newsType === "entertainmentNews"){
+                let tempArr = state.entertainment.filter((news,newsID)=> newsID !== action.payload.newsID);
+                const { entertainment: prevEntertainmentNews ,...prevState } = state;
+                return {entertainment:tempArr,...prevState};
+            }else if(action.payload.newsType === "sportsNews"){
+                let tempArr = state.sports.filter((news,newsID)=> newsID !== action.payload.newsID);
+                const { sports: prevSportsNews ,...prevState } = state;
+                return {sports:tempArr,...prevState};
             }else return state;
         default:
             return state;
